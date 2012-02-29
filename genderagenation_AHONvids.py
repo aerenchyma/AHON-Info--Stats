@@ -68,6 +68,7 @@ def strvidpercents(ldict):
 		
 # def strpercentonly(ldict):
 # 	for w in 
+# nvm, diff way
 
 # further generalizing fxns!
 videolist = [video01, video02, video03, video04, video05, video06, video07, video08, video09]
@@ -95,23 +96,17 @@ for item in videolist:
 			s = '%s,%s,%0.1f,%0.1f' % (key, x, z[0][x], z[1][x])
 			f.write(s + '\n')
 f.close()
-# these are all the same dammit
-# I am missing an iteration
+
 
 
 		
 # def savevidstats(list_of_vids):
 # 	f = open('gendagediff_vids.csv', 'w')
 # 	for item in list_of_vids:
-# 		x = age_video_percents(item)
-# 		y = gend_vid_percents(item)
+# 		x,y = age_video_percents(item), gend_vid_percents(item)
 # 		for key in x: # iterating through countries in gender
 # 			s += '%s,%s' % (item, )
-	
-# newdict = seelistvidstats(videolist)
-# print
-# print newdict
-# 			
+# nah, I'm gonna do this a different way.	
 
 
 
@@ -121,13 +116,3 @@ f.close()
 # CODE TIME
 
 seelistvidstats(videolist)
-
-# x = age_video_percents(video01) # there's nothing in the dictionaries. yay. ...
-# y = gend_vid_percents(video01)
-# #print x
-# #print y
-# printvidpercents(x)
-# print
-# printvidpercents(y)
-#	print "hi"
-#print printvidpercents(x) # returns None when the fxn returns something..
