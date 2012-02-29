@@ -62,6 +62,12 @@ def printvidpercents(ldict):
 	for w in sorted(ldict,key=ldict.get, reverse=True):
 		print w, "%0.1f" % ldict[w]	
 
+def strvidpercents(ldict):
+	for w in sorted(ldict,key=ldict.get, reverse=True):
+		return '%s, %0.1f' % (w,ldict[w])
+		
+# def strpercentonly(ldict):
+# 	for w in 
 
 # further generalizing fxns!
 videolist = [video01, video02, video03, video04, video05, video06, video07, video08, video09]
@@ -71,18 +77,42 @@ def seelistvidstats(list_of_vids):
 	for item in list_of_vids:
 		x = age_video_percents(item)
 		y = gend_vid_percents(item)
-		print "\nPercent of young viewers for Video Key--%s" % item
-		printvidpercents(x)
-		print "\nPercent of female viewers for Video Key--%s" % item
-		printvidpercents(y)
+	#	print "\nPercent of young viewers for Video Key--%s" % item
+		#printvidpercents(x)
+	#	print "\nPercent of female viewers for Video Key--%s" % item
+	#	printvidpercents(y)
 		vidgendage[item] = vidgendage.get(item,(x,y))
-		return vidgendage
+		#print vidgendage
+	return vidgendage
 
-newdict = seelistvidstats(videolist)
-print
-print newdict
+vidgenage = seelistvidstats(videolist)
+print vidgenage
+f = open('gendagediff_vids.csv', 'w')
+for item in videolist:
+	for key in vidgenage:
+		for x in vidgenage[key][0].keys():
+			z = vidgenage[key]
+			s = '%s,%s,%0.1f,%0.1f' % (key, x, z[0][x], z[1][x])
+			f.write(s + '\n')
+f.close()
+# these are all the same dammit
+# I am missing an iteration
+
+
 		
-		
+# def savevidstats(list_of_vids):
+# 	f = open('gendagediff_vids.csv', 'w')
+# 	for item in list_of_vids:
+# 		x = age_video_percents(item)
+# 		y = gend_vid_percents(item)
+# 		for key in x: # iterating through countries in gender
+# 			s += '%s,%s' % (item, )
+	
+# newdict = seelistvidstats(videolist)
+# print
+# print newdict
+# 			
+
 
 
 
@@ -90,7 +120,7 @@ print newdict
 
 # CODE TIME
 
-#seelistvidstats(videolist)
+seelistvidstats(videolist)
 
 # x = age_video_percents(video01) # there's nothing in the dictionaries. yay. ...
 # y = gend_vid_percents(video01)
